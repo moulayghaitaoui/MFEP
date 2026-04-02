@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial- scale=1.0">
     <title>نظام VTEI - لوحة المتابعة الشاملة</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
@@ -14,50 +15,151 @@
             --navy: #2c3e50;
             --white: #ffffff;
         }
-        body { 
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
-            background: var(--bg-gray); 
-            margin: 0; 
-            padding: 20px; 
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--bg-gray);
+            margin: 0;
+            padding: 20px;
             color: #333;
         }
-        .container { max-width: 1400px; margin: auto; }
-        .header { text-align: center; margin-bottom: 40px; border-bottom: 4px solid var(--primary-blue); padding-bottom: 20px; background: var(--white); border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
-        h1 { margin: 10px 0; color: var(--navy); }
-        
-        .kpi-container { display: flex; justify-content: space-around; margin-bottom: 30px; gap: 20px; flex-wrap: wrap; }
-        .kpi-card { 
-            background: var(--white); padding: 25px; border-radius: 12px; 
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05); flex: 1; min-width: 200px;
-            text-align: center; border-top: 5px solid var(--primary-blue); 
+
+        .container {
+            max-width: 1400px;
+            margin: auto;
         }
-        .kpi-card.high { border-top-color: var(--alert-red); }
-        .kpi-value { font-size: 2.2rem; font-weight: bold; display: block; color: var(--navy); }
-        .kpi-label { color: #7f8c8d; font-size: 1rem; margin-top: 8px; font-weight: 500; }
 
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(450px, 1fr)); gap: 25px; margin-bottom: 40px; }
-        .chart-box { background: var(--white); padding: 25px; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.08); }
-        h3 { margin-top: 0; font-size: 1.2rem; color: var(--navy); border-right: 4px solid var(--primary-blue); padding-right: 15px; margin-bottom: 20px; }
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            border-bottom: 4px solid var(--primary-blue);
+            padding-bottom: 20px;
+            background: var(--white);
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
 
-        .tables-section { margin-top: 60px; }
-        .table-wrapper { background: var(--white); padding: 30px; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.08); margin-bottom: 40px; overflow-x: auto; }
-        table { width: 100%; border-collapse: collapse; min-width: 850px; }
-        th, td { border: 1px solid #e0e0e0; padding: 10px; text-align: center; font-size: 0.9rem; }
-        th { background-color: var(--navy); color: white; font-weight: 600; }
-        tr:nth-child(even) { background-color: #f9fbfd; }
-        .highlight-bold { font-weight: bold; color: var(--navy); }
+        h1 {
+            margin: 10px 0;
+            color: var(--navy);
+        }
+
+        .kpi-container {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 30px;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .kpi-card {
+            background: var(--white);
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            flex: 1;
+            min-width: 200px;
+            text-align: center;
+            border-top: 5px solid var(--primary-blue);
+        }
+
+        .kpi-card.high {
+            border-top-color: var(--alert-red);
+        }
+
+        .kpi-value {
+            font-size: 2.2rem;
+            font-weight: bold;
+            display: block;
+            color: var(--navy);
+        }
+
+        .kpi-label {
+            color: #7f8c8d;
+            font-size: 1rem;
+            margin-top: 8px;
+            font-weight: 500;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .chart-box {
+            background: var(--white);
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        h3 {
+            margin-top: 0;
+            font-size: 1.2rem;
+            color: var(--navy);
+            border-right: 4px solid var(--primary-blue);
+            padding-right: 15px;
+            margin-bottom: 20px;
+        }
+
+        .tables-section {
+            margin-top: 60px;
+        }
+
+        .table-wrapper {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            margin-bottom: 40px;
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 850px;
+        }
+
+        th,
+        td {
+            border: 1px solid #e0e0e0;
+            padding: 10px;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        th {
+            background-color: var(--navy);
+            color: white;
+            font-weight: 600;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9fbfd;
+        }
+
+        .highlight-bold {
+            font-weight: bold;
+            color: var(--navy);
+        }
 
         .modal-overlay {
             display: none;
             position: fixed;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             background: rgba(0, 0, 0, 0.7);
             z-index: 1000;
             justify-content: center;
             align-items: center;
             backdrop-filter: blur(5px);
         }
+
         .modal-content {
             background: var(--white);
             width: 95%;
@@ -69,157 +171,993 @@
             overflow-y: auto;
             animation: modalSlide 0.3s ease-out;
         }
-        @keyframes modalSlide { from { transform: translateY(-50px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
-        
+
+        @keyframes modalSlide {
+            from {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
         .close-modal {
             position: absolute;
-            top: 15px; left: 15px;
+            top: 15px;
+            left: 15px;
             font-size: 30px;
             cursor: pointer;
             color: var(--alert-red);
             font-weight: bold;
         }
 
-        .footer-nav { 
-            margin-top: 50px; padding: 30px; background: var(--white); 
-            border-radius: 15px; box-shadow: 0 -5px 15px rgba(0,0,0,0.05); text-align: center;
+        .footer-nav {
+            margin-top: 50px;
+            padding: 30px;
+            background: var(--white);
+            border-radius: 15px;
+            box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.05);
+            text-align: center;
         }
-        .btn-institute { 
-            padding: 12px 25px; border: 2px solid var(--primary-blue); background: transparent; 
-            color: var(--navy); border-radius: 8px; cursor: pointer; font-weight: bold; transition: 0.3s; margin: 5px;
-        }
-        .btn-institute:hover { background: var(--primary-blue); color: white; }
 
-        @media (max-width: 768px) { .grid { grid-template-columns: 1fr; } }
+        .btn-institute {
+            padding: 12px 25px;
+            border: 2px solid var(--primary-blue);
+            background: transparent;
+            color: var(--navy);
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.3s;
+            margin: 5px;
+        }
+
+        .btn-institute:hover {
+            background: var(--primary-blue);
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            .grid {
+                grid-template-columns: 1fr;
+            }
+        }
     </style>
 </head>
+
 <body>
 
-<div class="container">
-    <div class="header">
-        <h1>لوحة تحليل بيانات المفتشين - VTEI</h1>
-        <p>عرض تفاعلي للحصص النسبية، توزيع عبء العمل، والجداول التفصيلية المحدثة</p>
-    </div>
+    <div class="container">
+        <div class="header">
+            <h1>لوحة تحليل بيانات المفتشين - VTEI</h1>
+            <p>عرض تفاعلي للحصص النسبية، توزيع عبء العمل، والجداول التفصيلية المحدثة</p>
+        </div>
 
-    <div class="kpi-container">
-        <div class="kpi-card"><span class="kpi-value">1,189</span><span class="kpi-label">إجمالي المفتشين</span></div>
-        <div class="kpi-card"><span class="kpi-value">761</span><span class="kpi-label">مفتش تقني بيداغوجي</span></div>
-        <div class="kpi-card"><span class="kpi-value">419</span><span class="kpi-label">مفتش إداري ومالي</span></div>
-        <div class="kpi-card high"><span class="kpi-value">سطيف</span><span class="kpi-label">المعهد الأكثر استقطاباً</span></div>
-    </div>
+        <div class="kpi-container">
+            <div class="kpi-card"><span class="kpi-value">1035</span><span class="kpi-label">إجمالي المفتشين</span>
+            </div>
+            <div class="kpi-card"><span class="kpi-value">54</span><span class="kpi-label">مجموع المترشحين من مفتش
+                    التكوين و التعليم المهنيين</span></div>
+            <div class="kpi-card"><span class="kpi-value">604</span><span class="kpi-label">مجموع المترشحين من مفتش تقني
+                    وبيداغوجي لتكوين والتعليم المهنين</span></div>
+            <div class="kpi-card"><span class="kpi-value">377</span><span class="kpi-label">مجموع المترشحين في رتبة مفتش
+                    اداري ومالي للتكوين والتعليم المهنيين</span></div>
+        </div>
 
-    <div class="grid">
-        <div class="chart-box"><h3>1. الحصة النسبية</h3><canvas id="pieChart"></canvas></div>
-        <div class="chart-box"><h3>2. تحليل النوع</h3><canvas id="stackedBar"></canvas></div>
-        <div class="chart-box"><h3>3. توزيع الأيام</h3><canvas id="dayColumnChart"></canvas></div>
-        <div class="chart-box"><h3>4. توازن اللجان</h3><canvas id="committeeChart"></canvas></div>
-    </div>
+        <div class="grid">
+            <div class="chart-box">
+                <h3>1. الحصة النسبية</h3><canvas id="pieChart"></canvas>
+            </div>
+            <div class="chart-box">
+                <h3>2. تحليل النوع</h3><canvas id="stackedBar"></canvas>
+            </div>
+            <div class="chart-box">
+                <h3>3. توزيع الأيام</h3><canvas id="dayColumnChart"></canvas>
+            </div>
+            <div class="chart-box">
+                <h3>4. توازن اللجان</h3><canvas id="committeeChart"></canvas>
+            </div>
+        </div>
 
-    <div id="modalBirKhadem" class="modal-overlay" onclick="closeModal('modalBirKhadem')"><div class="modal-content" onclick="event.stopPropagation()"><span class="close-modal" onclick="closeModal('modalBirKhadem')">&times;</span><h3>معهد بئر خادم</h3><table><thead><tr><th>الولايات</th><th>تقني</th><th>إداري</th><th>تكوين</th><th>المجموع</th></tr></thead><tbody><tr><td>تيزي وزو</td><td>15</td><td>10</td><td>0</td><td>25</td></tr><tr><td>الجزائر</td><td>10</td><td>10</td><td>3</td><td>23</td></tr><tr><td>بومرداس</td><td>10</td><td>0</td><td>2</td><td>12</td></tr><tr><td>تندوف</td><td>1</td><td>0</td><td>0</td><td>1</td></tr><tr><td>تيبازة</td><td>8</td><td>6</td><td>1</td><td>15</td></tr><tr style="background:#eee; font-weight:bold;"><td>المجموع</td><td>44</td><td>26</td><td>6</td><td>76</td></tr></tbody></table></div></div>
-    <div id="modalAnnaba" class="modal-overlay" onclick="closeModal('modalAnnaba')"><div class="modal-content" onclick="event.stopPropagation()"><span class="close-modal" onclick="closeModal('modalAnnaba')">&times;</span><h3>معهد عنابة</h3><table><thead><tr><th>الولايات</th><th>تقني</th><th>إداري</th><th>تكوين</th><th>المجموع</th></tr></thead><tbody><tr><td>تبسة</td><td>20</td><td>9</td><td>0</td><td>29</td></tr><tr><td>سكيكدة</td><td>23</td><td>6</td><td>0</td><td>29</td></tr><tr><td>عنابة</td><td>18</td><td>8</td><td>0</td><td>26</td></tr><tr><td>قسنطينة</td><td>11</td><td>5</td><td>1</td><td>17</td></tr><tr><td>الطارف</td><td>11</td><td>7</td><td>0</td><td>18</td></tr><tr><td>خنشلة</td><td>11</td><td>3</td><td>0</td><td>14</td></tr><tr><td>سوق اهراس</td><td>16</td><td>9</td><td>1</td><td>26</td></tr><tr><td>قالمة</td><td>10</td><td>6</td><td>1</td><td>17</td></tr><tr><td>ام البواقي</td><td>17</td><td>2</td><td>2</td><td>21</td></tr><tr style="background:#eee; font-weight:bold;"><td>المجموع</td><td>137</td><td>55</td><td>5</td><td>197</td></tr></tbody></table></div></div>
-    <div id="modalSetif" class="modal-overlay" onclick="closeModal('modalSetif')"><div class="modal-content" onclick="event.stopPropagation()"><span class="close-modal" onclick="closeModal('modalSetif')">&times;</span><h3>معهد سطيف</h3><table><thead><tr><th>الولايات</th><th>تقني</th><th>إداري</th><th>تكوين</th><th>المجموع</th></tr></thead><tbody><tr><td>سطيف</td><td>17</td><td>22</td><td>0</td><td>39</td></tr><tr><td>بسكرة</td><td>17</td><td>11</td><td>0</td><td>28</td></tr><tr><td>جيجل</td><td>21</td><td>10</td><td>2</td><td>33</td></tr><tr><td>المسيلة</td><td>7</td><td>12</td><td>0</td><td>19</td></tr><tr><td>برج بوعريريج</td><td>15</td><td>16</td><td>1</td><td>32</td></tr><tr><td>ميلة</td><td>8</td><td>11</td><td>3</td><td>22</td></tr><tr><td>باتنة</td><td>33</td><td>16</td><td>1</td><td>50</td></tr><tr><td>بجاية</td><td>22</td><td>10</td><td>0</td><td>32</td></tr><tr style="background:#eee; font-weight:bold;"><td>المجموع</td><td>140</td><td>108</td><td>7</td><td>255</td></tr></tbody></table></div></div>
-    <div id="modalMedea" class="modal-overlay" onclick="closeModal('modalMedea')"><div class="modal-content" onclick="event.stopPropagation()"><span class="close-modal" onclick="closeModal('modalMedea')">&times;</span><h3>معهد المدية</h3><table><thead><tr><th>الولايات</th><th>تقني</th><th>إداري</th><th>تكوين</th><th>المجموع</th></tr></thead><tbody><tr><td>الشلف</td><td>22</td><td>12</td><td>0</td><td>34</td></tr><tr><td>الأغواط</td><td>12</td><td>11</td><td>3</td><td>26</td></tr><tr><td>البليدة</td><td>7</td><td>7</td><td>3</td><td>17</td></tr><tr><td>البويرة</td><td>10</td><td>8</td><td>1</td><td>19</td></tr><tr><td>الجلفة</td><td>15</td><td>4</td><td>0</td><td>19</td></tr><tr><td>المدية</td><td>7</td><td>4</td><td>2</td><td>13</td></tr><tr><td>عين الدفلى</td><td>12</td><td>6</td><td>1</td><td>19</td></tr><tr><td>تيسمسيلت</td><td>11</td><td>3</td><td>0</td><td>14</td></tr><tr style="background:#eee; font-weight:bold;"><td>المجموع</td><td>96</td><td>55</td><td>10</td><td>161</td></tr></tbody></table></div></div>
-    <div id="modalOuargla" class="modal-overlay" onclick="closeModal('modalOuargla')"><div class="modal-content" onclick="event.stopPropagation()"><span class="close-modal" onclick="closeModal('modalOuargla')">&times;</span><h3>معهد ورقلة</h3><table><thead><tr><th>الولايات</th><th>تقني</th><th>إداري</th><th>تكوين</th><th>المجموع</th></tr></thead><tbody><tr><td>ادرار</td><td>5</td><td>5</td><td>1</td><td>11</td></tr><tr><td>ورقلة</td><td>6</td><td>3</td><td>1</td><td>10</td></tr><tr><td>غرداية</td><td>8</td><td>6</td><td>0</td><td>14</td></tr><tr><td>تمنراست</td><td>3</td><td>2</td><td>1</td><td>6</td></tr><tr><td>الوادي</td><td>14</td><td>3</td><td>2</td><td>19</td></tr><tr><td>تقرت</td><td>5</td><td>7</td><td>0</td><td>12</td></tr><tr><td>اليزي</td><td>2</td><td>1</td><td>1</td><td>4</td></tr><tr><td>ان صالح</td><td>5</td><td>2</td><td>1</td><td>8</td></tr><tr><td>برج باجي مختار</td><td>1</td><td>0</td><td>0</td><td>1</td></tr><tr><td>بني عباس</td><td>5</td><td>1</td><td>0</td><td>6</td></tr><tr><td>ان قزام</td><td>0</td><td>0</td><td>0</td><td>0</td></tr><tr><td>أولاد جلال</td><td>5</td><td>2</td><td>1</td><td>8</td></tr><tr><td>المنيعة</td><td>4</td><td>2</td><td>0</td><td>6</td></tr><tr><td>المغير</td><td>3</td><td>4</td><td>0</td><td>7</td></tr><tr><td>جانت</td><td>0</td><td>0</td><td>1</td><td>1</td></tr><tr><td>تيميمون</td><td>4</td><td>4</td><td>0</td><td>8</td></tr><tr style="background:#eee; font-weight:bold;"><td>المجموع</td><td>70</td><td>42</td><td>9</td><td>121</td></tr></tbody></table></div></div>
+        <div id="modalBirKhadem" class="modal-overlay" onclick="closeModal('modalBirKhadem')">
+            <div class="modal-content" onclick="event.stopPropagation()"><span class="close-modal"
+                    onclick="closeModal('modalBirKhadem')">&times;</span>
+                <h3>المعهد الوطني للتكوين و التعليم المهنيين الابيار </h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>الولايات</th>
+                            <th>ITP</th>
+                            <th>IAF</th>
+                            <th>IFP</th>
+                            <th>المجموع</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>تيزي وزو</td>
+                            <td>15</td>
+                            <td>10</td>
+                            <td>0</td>
+                            <td>25</td>
+                        </tr>
+                        <tr>
+                            <td>الجزائر</td>
+                            <td>11</td>
+                            <td>10</td>
+                            <td>3</td>
+                            <td>24</td>
+                        </tr>
+                        <tr>
+                            <td>بومرداس</td>
+                            <td>10</td>
+                            <td>0</td>
+                            <td>2</td>
+                            <td>12</td>
+                        </tr>
+                        <tr>
+                            <td>تندوف</td>
+                            <td>1</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>1</td>
+                        </tr>
+                        <tr>
+                            <td>تيبازة</td>
+                            <td>8</td>
+                            <td>6</td>
+                            <td>1</td>
+                            <td>15</td>
+                        </tr>
+                        <tr style="background:#eee; font-weight:bold;">
+                            <td>المجموع</td>
+                            <td>45</td>
+                            <td>26</td>
+                            <td>6</td>
+                            <td>77</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div id="modalAnnaba" class="modal-overlay" onclick="closeModal('modalAnnaba')">
+            <div class="modal-content" onclick="event.stopPropagation()"><span class="close-modal"
+                    onclick="closeModal('modalAnnaba')">&times;</span>
+                <h3>معهد التكوين و التعليم المهنيين عنابة </h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>الولايات</th>
+                            <th>ITP</th>
+                            <th>IAF</th>
+                            <th>IFP</th>
+                            <th>المجموع</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>تبسة</td>
+                            <td>20</td>
+                            <td>9</td>
+                            <td>0</td>
+                            <td>29</td>
+                        </tr>
+                        <tr>
+                            <td>سكيكدة</td>
+                            <td>23</td>
+                            <td>6</td>
+                            <td>0</td>
+                            <td>29</td>
+                        </tr>
+                        <tr>
+                            <td>عنابة</td>
+                            <td>18</td>
+                            <td>8</td>
+                            <td>0</td>
+                            <td>26</td>
+                        </tr>
+                        <tr>
+                            <td>قسنطينة</td>
+                            <td>11</td>
+                            <td>5</td>
+                            <td>1</td>
+                            <td>17</td>
+                        </tr>
+                        <tr>
+                            <td>الطارف</td>
+                            <td>11</td>
+                            <td>7</td>
+                            <td>0</td>
+                            <td>18</td>
+                        </tr>
+                        <tr>
+                            <td>خنشلة</td>
+                            <td>11</td>
+                            <td>3</td>
+                            <td>0</td>
+                            <td>14</td>
+                        </tr>
+                        <tr>
+                            <td>سوق اهراس</td>
+                            <td>16</td>
+                            <td>9</td>
+                            <td>1</td>
+                            <td>26</td>
+                        </tr>
+                        <tr>
+                            <td>قالمة</td>
+                            <td>10</td>
+                            <td>6</td>
+                            <td>1</td>
+                            <td>17</td>
+                        </tr>
+                        <tr>
+                            <td>ام البواقي</td>
+                            <td>17</td>
+                            <td>2</td>
+                            <td>2</td>
+                            <td>21</td>
+                        </tr>
+                        <tr style="background:#eee; font-weight:bold;">
+                            <td>المجموع</td>
+                            <td>137</td>
+                            <td>55</td>
+                            <td>5</td>
+                            <td>197</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div id="modalSetif" class="modal-overlay" onclick="closeModal('modalSetif')">
+            <div class="modal-content" onclick="event.stopPropagation()"><span class="close-modal"
+                    onclick="closeModal('modalSetif')">&times;</span>
+                <h3>معهد التكوين والتعليم المهنيين سطيف </h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>الولايات</th>
+                            <th>ITP</th>
+                            <th>IAF</th>
+                            <th>IFP</th>
+                            <th>المجموع</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>سطيف</td>
+                            <td>17</td>
+                            <td>22</td>
+                            <td>0</td>
+                            <td>39</td>
+                        </tr>
+                        <tr>
+                            <td>بسكرة</td>
+                            <td>17</td>
+                            <td>11</td>
+                            <td>0</td>
+                            <td>28</td>
+                        </tr>
+                        <tr>
+                            <td>جيجل</td>
+                            <td>21</td>
+                            <td>10</td>
+                            <td>2</td>
+                            <td>33</td>
+                        </tr>
+                        <tr>
+                            <td>المسيلة</td>
+                            <td>7</td>
+                            <td>12</td>
+                            <td>0</td>
+                            <td>19</td>
+                        </tr>
+                        <tr>
+                            <td>برج بوعريريج</td>
+                            <td>15</td>
+                            <td>16</td>
+                            <td>1</td>
+                            <td>32</td>
+                        </tr>
+                        <tr>
+                            <td>ميلة</td>
+                            <td>8</td>
+                            <td>11</td>
+                            <td>3</td>
+                            <td>22</td>
+                        </tr>
+                        <tr>
+                            <td>باتنة</td>
+                            <td>33</td>
+                            <td>16</td>
+                            <td>1</td>
+                            <td>50</td>
+                        </tr>
+                        <tr>
+                            <td>بجاية</td>
+                            <td>22</td>
+                            <td>10</td>
+                            <td>0</td>
+                            <td>32</td>
+                        </tr>
+                        <tr style="background:#eee; font-weight:bold;">
+                            <td>المجموع</td>
+                            <td>140</td>
+                            <td>108</td>
+                            <td>7</td>
+                            <td>255</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div id="modalMedea" class="modal-overlay" onclick="closeModal('modalMedea')">
+            <div class="modal-content" onclick="event.stopPropagation()"><span class="close-modal"
+                    onclick="closeModal('modalMedea')">&times;</span>
+                <h3>معهد التكوين والتعليم المهنيين المدية </h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>الولايات</th>
+                            <th>ITP</th>
+                            <th>IAF</th>
+                            <th>IFP</th>
+                            <th>المجموع</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>الشلف</td>
+                            <td>22</td>
+                            <td>12</td>
+                            <td>0</td>
+                            <td>34</td>
+                        </tr>
+                        <tr>
+                            <td>الأغواط</td>
+                            <td>12</td>
+                            <td>11</td>
+                            <td>3</td>
+                            <td>26</td>
+                        </tr>
+                        <tr>
+                            <td>البليدة</td>
+                            <td>7</td>
+                            <td>7</td>
+                            <td>3</td>
+                            <td>17</td>
+                        </tr>
+                        <tr>
+                            <td>البويرة</td>
+                            <td>10</td>
+                            <td>8</td>
+                            <td>1</td>
+                            <td>19</td>
+                        </tr>
+                        <tr>
+                            <td>الجلفة</td>
+                            <td>15</td>
+                            <td>4</td>
+                            <td>0</td>
+                            <td>19</td>
+                        </tr>
+                        <tr>
+                            <td>المدية</td>
+                            <td>7</td>
+                            <td>4</td>
+                            <td>2</td>
+                            <td>13</td>
+                        </tr>
+                        <tr>
+                            <td>عين الدفلى</td>
+                            <td>12</td>
+                            <td>6</td>
+                            <td>1</td>
+                            <td>19</td>
+                        </tr>
+                        <tr>
+                            <td>تيسمسيلت</td>
+                            <td>11</td>
+                            <td>3</td>
+                            <td>0</td>
+                            <td>14</td>
+                        </tr>
+                        <tr style="background:#eee; font-weight:bold;">
+                            <td>المجموع</td>
+                            <td>96</td>
+                            <td>55</td>
+                            <td>10</td>
+                            <td>161</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div id="modalOuargla" class="modal-overlay" onclick="closeModal('modalOuargla')">
+            <div class="modal-content" onclick="event.stopPropagation()"><span class="close-modal"
+                    onclick="closeModal('modalOuargla')">&times;</span>
+                <h3>معهد التكوين والتعليم المهنيين ورقلة</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>الولايات</th>
+                            <th>ITP</th>
+                            <th>IAF</th>
+                            <th>IFP</th>
+                            <th>المجموع</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>ادرار</td>
+                            <td>5</td>
+                            <td>5</td>
+                            <td>1</td>
+                            <td>11</td>
+                        </tr>
+                        <tr>
+                            <td>ورقلة</td>
+                            <td>6</td>
+                            <td>3</td>
+                            <td>1</td>
+                            <td>10</td>
+                        </tr>
+                        <tr>
+                            <td>غرداية</td>
+                            <td>8</td>
+                            <td>6</td>
+                            <td>0</td>
+                            <td>14</td>
+                        </tr>
+                        <tr>
+                            <td>تمنراست</td>
+                            <td>3</td>
+                            <td>2</td>
+                            <td>1</td>
+                            <td>6</td>
+                        </tr>
+                        <tr>
+                            <td>الوادي</td>
+                            <td>14</td>
+                            <td>3</td>
+                            <td>2</td>
+                            <td>19</td>
+                        </tr>
+                        <tr>
+                            <td>تقرت</td>
+                            <td>5</td>
+                            <td>7</td>
+                            <td>0</td>
+                            <td>12</td>
+                        </tr>
+                        <tr>
+                            <td>اليزي</td>
+                            <td>2</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>4</td>
+                        </tr>
+                        <tr>
+                            <td>ان صالح</td>
+                            <td>5</td>
+                            <td>2</td>
+                            <td>1</td>
+                            <td>8</td>
+                        </tr>
+                        <tr>
+                            <td>برج باجي مختار</td>
+                            <td>1</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>1</td>
+                        </tr>
+                        <tr>
+                            <td>بني عباس</td>
+                            <td>5</td>
+                            <td>1</td>
+                            <td>0</td>
+                            <td>6</td>
+                        </tr>
+                        <tr>
+                            <td>ان قزام</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                        </tr>
+                        <tr>
+                            <td>أولاد جلال</td>
+                            <td>5</td>
+                            <td>2</td>
+                            <td>1</td>
+                            <td>8</td>
+                        </tr>
+                        <tr>
+                            <td>المنيعة</td>
+                            <td>4</td>
+                            <td>2</td>
+                            <td>0</td>
+                            <td>6</td>
+                        </tr>
+                        <tr>
+                            <td>المغير</td>
+                            <td>3</td>
+                            <td>4</td>
+                            <td>0</td>
+                            <td>7</td>
+                        </tr>
+                        <tr>
+                            <td>جانت</td>
+                            <td>0</td>
+                            <td>1</td>
+                            <td>0</td>
+                            <td>1</td>
+                        </tr>
+                        <tr>
+                            <td>تيميمون</td>
+                            <td>4</td>
+                            <td>4</td>
+                            <td>0</td>
+                            <td>8</td>
+                        </tr>
+                        <tr style="background:#eee; font-weight:bold;">
+                            <td>المجموع</td>
+                            <td>70</td>
+                            <td>43</td>
+                            <td>8</td>
+                            <td>121</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
 
-    <div id="modalSidiBelAbbes" class="modal-overlay" onclick="closeModal('modalSidiBelAbbes')">
-        <div class="modal-content" onclick="event.stopPropagation()">
-            <span class="close-modal" onclick="closeModal('modalSidiBelAbbes')">&times;</span>
-            <h3 style="color: var(--primary-blue); border-right: 4px solid var(--primary-blue); padding-right:15px;">جدول معهد التكوين والتعليم المهني -سيدي بلعباس-</h3>
-            <table>
-                <thead>
-                    <tr>
-                        <th>الولايات</th>
-                        <th>عدد المفتشين التقنيين والبيداغوجيين</th>
-                        <th>عدد المفتشين الإداريين والماليين</th>
-                        <th>عدد مفتشين التكوين والتعليم المهني</th>
-                        <th>المجموع</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr><td>بشار</td><td>1</td><td>5</td><td>1</td><td>7</td></tr>
-                    <tr><td>تلمسان</td><td>19</td><td>17</td><td>3</td><td>39</td></tr>
-                    <tr><td>تيارت</td><td>21</td><td>9</td><td>2</td><td>32</td></tr>
-                    <tr><td>سعيدة</td><td>10</td><td>10</td><td>0</td><td>20</td></tr>
-                    <tr><td>سيدي بلعباس</td><td>4</td><td>10</td><td>1</td><td>15</td></tr>
-                    <tr><td>مستغانم</td><td>10</td><td>3</td><td>3</td><td>16</td></tr>
-                    <tr><td>معسكر</td><td>6</td><td>4</td><td>3</td><td>13</td></tr>
-                    <tr><td>وهران</td><td>2</td><td>7</td><td>2</td><td>11</td></tr>
-                    <tr><td>النعامة</td><td>6</td><td>3</td><td>0</td><td>9</td></tr>
-                    <tr><td>عين تموشنت</td><td>16</td><td>10</td><td>2</td><td>28</td></tr>
-                    <tr><td>غليزان</td><td>12</td><td>10</td><td>0</td><td>22</td></tr>
-                    <tr><td>البيض</td><td>9</td><td>2</td><td>1</td><td>12</td></tr>
-                    <tr style="background:#eee; font-weight:bold;"><td>المجموع</td><td>116</td><td>90</td><td>18</td><td>224</td></tr>
-                </tbody>
-            </table>
+        <div id="modalSidiBelAbbes" class="modal-overlay" onclick="closeModal('modalSidiBelAbbes')">
+            <div class="modal-content" onclick="event.stopPropagation()">
+                <span class="close-modal" onclick="closeModal('modalSidiBelAbbes')">&times;</span>
+                <h3
+                    style="color: var(--primary-blue); border-right: 4px solid var(--primary-blue); padding-right:15px;">
+                    جدول معهد التكوين والتعليم المهني -سيدي بلعباس-</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>الولايات</th>
+                            <th>عدد المفتشين التقنيين والبيداغوجيين</th>
+                            <th>عدد المفتشين الإداريين والماليين</th>
+                            <th>عدد مفتشين التكوين والتعليم المهني</th>
+                            <th>المجموع</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>بشار</td>
+                            <td>1</td>
+                            <td>5</td>
+                            <td>1</td>
+                            <td>7</td>
+                        </tr>
+                        <tr>
+                            <td>تلمسان</td>
+                            <td>19</td>
+                            <td>17</td>
+                            <td>3</td>
+                            <td>39</td>
+                        </tr>
+                        <tr>
+                            <td>تيارت</td>
+                            <td>21</td>
+                            <td>9</td>
+                            <td>2</td>
+                            <td>32</td>
+                        </tr>
+                        <tr>
+                            <td>سعيدة</td>
+                            <td>10</td>
+                            <td>10</td>
+                            <td>0</td>
+                            <td>20</td>
+                        </tr>
+                        <tr>
+                            <td>سيدي بلعباس</td>
+                            <td>4</td>
+                            <td>10</td>
+                            <td>1</td>
+                            <td>15</td>
+                        </tr>
+                        <tr>
+                            <td>مستغانم</td>
+                            <td>10</td>
+                            <td>3</td>
+                            <td>3</td>
+                            <td>16</td>
+                        </tr>
+                        <tr>
+                            <td>معسكر</td>
+                            <td>6</td>
+                            <td>4</td>
+                            <td>3</td>
+                            <td>13</td>
+                        </tr>
+                        <tr>
+                            <td>وهران</td>
+                            <td>2</td>
+                            <td>7</td>
+                            <td>2</td>
+                            <td>11</td>
+                        </tr>
+                        <tr>
+                            <td>النعامة</td>
+                            <td>6</td>
+                            <td>3</td>
+                            <td>0</td>
+                            <td>9</td>
+                        </tr>
+                        <tr>
+                            <td>عين تموشنت</td>
+                            <td>16</td>
+                            <td>10</td>
+                            <td>2</td>
+                            <td>28</td>
+                        </tr>
+                        <tr>
+                            <td>غليزان</td>
+                            <td>12</td>
+                            <td>10</td>
+                            <td>0</td>
+                            <td>22</td>
+                        </tr>
+                        <tr>
+                            <td>البيض</td>
+                            <td>9</td>
+                            <td>2</td>
+                            <td>1</td>
+                            <td>12</td>
+                        </tr>
+                        <tr style="background:#eee; font-weight:bold;">
+                            <td>المجموع</td>
+                            <td>116</td>
+                            <td>90</td>
+                            <td>18</td>
+                            <td>224</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="tables-section">
+            <h2 style="text-align: center; margin-bottom: 40px; color: var(--navy);">الجداول الاحصائي </h2>
+            <style>
+                .custom-table-wrapper {
+                    background: #ffffff;
+                    padding: 20px;
+                    border-radius: 15px;
+                    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+                    margin: 20px auto;
+                    overflow-x: auto;
+                    direction: rtl;
+                    font-family: 'Segoe UI', Tahoma, sans-serif;
+                }
+
+                .custom-table {
+                    width: 100%;
+                    border-collapse: collapse;
+                    min-width: 800px;
+                    text-align: center;
+                }
+
+                .custom-table th {
+                    background-color: #2c3e50;
+                    color: white;
+                    padding: 12px;
+                    border: 1px solid #ddd;
+                }
+
+                .custom-table td {
+                    padding: 12px;
+                    border: 1px solid #ddd;
+                    color: #333;
+                }
+
+                .custom-table tr:nth-child(even) {
+                    background-color: #f9fbfd;
+                }
+
+                .custom-table .highlight {
+                    font-weight: bold;
+                    color: #2c3e50;
+                }
+
+                .custom-table .total-row {
+                    background-color: #eeeeee !important;
+                    font-weight: bold;
+                }
+
+                .custom-table .final-sum {
+                    color: #e74c3c;
+                    font-size: 1.1rem;
+                }
+            </style>
+
+            <div class="custom-table-wrapper">
+                <h3
+                    style="text-align: right; color: #3498db; margin-bottom: 15px; border-right: 4px solid #3498db; padding-right: 10px;">
+                    جدول توزيع المفتشين حسب المعهد والرتبة
+                </h3>
+                <table class="custom-table">
+                    <thead>
+                        <tr>
+                            <th>معهد التكوين و التعليم المهني</th>
+                            <th>عدد المفتشين الإداريين والماليين</th>
+                            <th>عدد المفتشين التقنيين والبيداغوجيين</th>
+                            <th>عدد مفتشي التكوين والتعليم المهني</th>
+                            <th>المجموع</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>المعهد الوطني للتكوين و التعليم المهني - الابيار -</td>
+                            <td>26</td>
+                            <td>45</td>
+                            <td>6</td>
+                            <td class="highlight">77</td>
+                        </tr>
+                        <tr>
+                            <td>معهد التكوين و التعليم المهني - عنابة -</td>
+                            <td>55</td>
+                            <td>137</td>
+                            <td>5</td>
+                            <td class="highlight">197</td>
+                        </tr>
+                        <tr>
+                            <td>معهد التكوين والتعليم المهني - سطيف -</td>
+                            <td>108</td>
+                            <td>140</td>
+                            <td>7</td>
+                            <td class="highlight">255</td>
+                        </tr>
+                        <tr>
+                            <td>معهد التكوين والتعليم المهني - المدية -</td>
+                            <td>55</td>
+                            <td>96</td>
+                            <td>10</td>
+                            <td class="highlight">161</td>
+                        </tr>
+                        <tr>
+                            <td>معهد التكوين والتعليم المهني - ورقلة -</td>
+                            <td>43</td>
+                            <td>70</td>
+                            <td>8</td>
+                            <td class="highlight">121</td>
+                        </tr>
+                        <tr>
+                            <td>معهد التكوين والتعليم المهني - سيدي بلعباس -</td>
+                            <td>90</td>
+                            <td>116</td>
+                            <td>18</td>
+                            <td class="highlight">224</td>
+                        </tr>
+                        <tr class="total-row">
+                            <td>المجموع</td>
+                            <td>377</td>
+                            <td>604</td>
+                            <td>54</td>
+                            <td class="final-sum">1035</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="table-wrapper">
+                <h3
+                    style="text-align: right; color: #3498db; margin-bottom: 15px; border-right: 4px solid #3498db; padding-right: 10px;">
+                    جدول توزيع المفتشين واللجان حسب المعاهد</h3>
+                </h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>المعهد</th>
+                            <th>ITP + IFP</th>
+                            <th>اللجان</th>
+                            <th>IAF</th>
+                            <th>اللجان</th>
+                            <th>المجموع العام</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>المعهد الوطني للتكوين و التعليم المهنيين الابيار</td>
+                            <td>51</td>
+                            <td>1</td>
+                            <td>26</td>
+                            <td>1</td>
+                            <td class="highlight-bold">77</td>
+                        </tr>
+                        <tr>
+                            <td>معهد التكوين و التعليم المهنيين عنابة </td>
+                            <td>142</td>
+                            <td>2</td>
+                            <td>55</td>
+                            <td>2</td>
+                            <td class="highlight-bold">197</td>
+                        </tr>
+                        <tr>
+                            <td>معهد التكوين والتعليم المهنيين سطيف </td>
+                            <td>147</td>
+                            <td>2</td>
+                            <td>108</td>
+                            <td>2</td>
+                            <td class="highlight-bold">253</td>
+                        </tr>
+                        <tr>
+                            <td>معهد التكوين والتعليم المهنيين المدية </td>
+                            <td>106</td>
+                            <td>2</td>
+                            <td>55</td>
+                            <td>2</td>
+                            <td class="highlight-bold">197</td>
+                        </tr>
+                        <tr>
+                            <td>معهد التكوين والتعليم المهنيين ورقلة</td>
+                            <td>78</td>
+                            <td>2</td>
+                            <td>43</td>
+                            <td>1</td>
+                            <td class="highlight-bold">120</td>
+                        </tr>
+                        <tr>
+                            <td>معهد التكوين و التعليم المهنيين سيدي بلعباس </td>
+                            <td>134</td>
+                            <td>2</td>
+                            <td>90</td>
+                            <td>2</td>
+                            <td class="highlight-bold">224</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="table-wrapper">
+                <h3
+                    style="text-align: right; color: #3498db; margin-bottom: 15px; border-right: 4px solid #3498db; padding-right: 10px;">
+                    توزيع المترشحين لرتبة مفتش تقني وبيداغوجي ومفتش لتكوين والتعليم المهنيين</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>المعهد</th>
+                            <th>الأيام</th>
+                            <th>اللجنة 01</th>
+                            <th>اللجنة 02</th>
+                            <th>المجموع اليومي</th>
+                            <th>الإجمالي</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td rowspan="2">المعهد الوطني للتكوين و التعليم المهنيين الابيار</td>
+                            <td>اليوم الأول</td>
+                            <td>26</td>
+                            <td>/</td>
+                            <td>26</td>
+                            <td rowspan="2" class="highlight-bold">51</td>
+                        </tr>
+                        <tr>
+                            <td>اليوم الثاني</td>
+                            <td>25</td>
+                            <td>/</td>
+                            <td>25</td>
+                        </tr>
+                        <tr>
+                            <td rowspan="2">معهد التكوين و التعليم المهنيين عنابة </td>
+                            <td>اليوم الأول</td>
+                            <td>36</td>
+                            <td>36</td>
+                            <td>72</td>
+                            <td rowspan="2" class="highlight-bold">142</td>
+                        </tr>
+                        <tr>
+                            <td>اليوم الثاني</td>
+                            <td>35</td>
+                            <td>35</td>
+                            <td>70</td>
+                        </tr>
+                        <tr>
+                            <td rowspan="2">معهد التكوين والتعليم المهنيين سطيف </td>
+                            <td>اليوم الأول</td>
+                            <td>38</td>
+                            <td>37</td>
+                            <td>75</td>
+                            <td rowspan="2" class="highlight-bold">147</td>
+                        </tr>
+                        <tr>
+                            <td>اليوم الثاني</td>
+                            <td>36</td>
+                            <td>36</td>
+                            <td>72</td>
+                        </tr>
+                        <tr>
+                            <td rowspan="2">معهد التكوين والتعليم المهنيين المدية </td>
+                            <td>اليوم الأول</td>
+                            <td>26</td>
+                            <td>25</td>
+                            <td>51</td>
+                            <td rowspan="2" class="highlight-bold">106</td>
+                        </tr>
+                        <tr>
+                            <td>اليوم الثاني</td>
+                            <td>27</td>
+                            <td>28</td>
+                            <td>55</td>
+                        </tr>
+                        
+                          <tr>
+                            <td rowspan="2">معهد التكوين والتعليم المهنيين ورقلة</td>
+                            <td>اليوم الأول</td>
+                            <td>20</td>
+                            <td>20</td>
+                            <td>40</td>
+                            <td rowspan="2" class="highlight-bold">78</td>
+                        </tr>
+                        <tr>
+                            <td>اليوم الثاني</td>
+                            <td>19</td>
+                            <td>19</td>
+                            <td>38</td>
+                        </tr>
+                        <tr>
+                            <td rowspan="2">معهد التكوين و التعليم المهنيين سيدي بلعباس </td>
+                            <td>اليوم الأول</td>
+                            <td>34</td>
+                            <td>33</td>
+                            <td>67</td>
+                            <td rowspan="2" class="highlight-bold">134</td>
+                        </tr>
+                        <tr>
+                            <td>اليوم الثاني</td>
+                            <td>33</td>
+                            <td>34</td>
+                            <td>67</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+
+        </div>
+
+
+
+        <div class="footer-nav">
+            <div class="nav-title">
+                <h3>معاهد التكوين و التعليم المهنيين
+            </div>
+            <div class="btn-group">
+                <button class="btn-institute" onclick="openModal('modalBirKhadem')">الابيار</button>
+                <button class="btn-institute" onclick="openModal('modalAnnaba')">عنابة</button>
+                <button class="btn-institute" onclick="openModal('modalSetif')">سطيف</button>
+                <button class="btn-institute" onclick="openModal('modalMedea')">المدية</button>
+                <button class="btn-institute" onclick="openModal('modalOuargla')">ورقلة</button>
+                <button class="btn-institute" onclick="openModal('modalSidiBelAbbes')">سيدي بلعباس</button>
+            </div>
         </div>
     </div>
 
-    <div class="tables-section">
-        <h2 style="text-align: center; margin-bottom: 40px; color: var(--navy);">الجداول المرجعية المحدثة</h2>
-        
-        <div class="table-wrapper">
-            <h3>جدول (ب): تفاصيل المفتش التقني والبيداغوجي </h3>
-            <table>
-                <thead><tr><th>المعهد</th><th>الأيام</th><th>اللجنة 01</th><th>اللجنة 02</th><th>المجموع اليومي</th><th>الإجمالي</th></tr></thead>
-                <tbody>
-                    <tr><td rowspan="2">المعهد الوطني</td><td>اليوم الأول</td><td>25</td><td>/</td><td>25</td><td rowspan="2" class="highlight-bold">50</td></tr>
-                    <tr><td>اليوم الثاني</td><td>25</td><td>/</td><td>25</td></tr>
-                    <tr><td rowspan="2">معهد عنابة</td><td>اليوم الأول</td><td>36</td><td>36</td><td>72</td><td rowspan="2" class="highlight-bold">142</td></tr>
-                    <tr><td>اليوم الثاني</td><td>35</td><td>35</td><td>70</td></tr>
-                    <tr><td rowspan="2">معهد سطيف</td><td>اليوم الأول</td><td>37</td><td>37</td><td>74</td><td rowspan="2" class="highlight-bold">145</td></tr>
-                    <tr><td>اليوم الثاني</td><td>36</td><td>35</td><td>71</td></tr>
-                    <tr><td rowspan="2">معهد المدية</td><td>اليوم الأول</td><td>35</td><td>35</td><td>70</td><td rowspan="2" class="highlight-bold">142</td></tr>
-                    <tr><td>اليوم الثاني</td><td>36</td><td>36</td><td>72</td></tr>
-                    <tr><td>معهد ورقلة</td><td>اليوم الأول</td><td>39</td><td>39</td><td>78</td><td class="highlight-bold">78</td></tr>
-                    <tr><td rowspan="2">معهد سيدي بلعباس</td><td>اليوم الأول</td><td>34</td><td>34</td><td>68</td><td rowspan="2" class="highlight-bold">134</td></tr>
-                    <tr><td>اليوم الثاني</td><td>33</td><td>33</td><td>66</td></tr>
-                </tbody>
-            </table>
-        </div>
+    <script>
+        function openModal(id) { document.getElementById(id).style.display = 'flex'; document.body.style.overflow = 'hidden'; }
+        function closeModal(id) { document.getElementById(id).style.display = 'none'; document.body.style.overflow = 'auto'; }
 
-        <div class="table-wrapper">
-            <h3>جدول (أ): خلاصة توزيع المفتشين </h3>
-            <table>
-                <thead><tr><th>المعهد</th><th>بيداغوجي</th><th>اللجان</th><th>إداري</th><th>اللجان</th><th>المجموع العام</th></tr></thead>
-                <tbody>
-                    <tr><td>المعهد الوطني</td><td>50</td><td>1</td><td>26</td><td>1</td><td class="highlight-bold">76</td></tr>
-                    <tr><td>معهد عنابة</td><td>142</td><td>2</td><td>55</td><td>2</td><td class="highlight-bold">197</td></tr>
-                    <tr><td>معهد سطيف</td><td>145</td><td>2</td><td>108</td><td>2</td><td class="highlight-bold">253</td></tr>
-                    <tr><td>معهد المدية</td><td>142</td><td>2</td><td>55</td><td>2</td><td class="highlight-bold">197</td></tr>
-                    <tr><td>معهد ورقلة</td><td>78</td><td>2</td><td>42</td><td>1</td><td class="highlight-bold">120</td></tr>
-                    <tr><td>معهد سيدي بلعباس</td><td>134</td><td>2</td><td>90</td><td>2</td><td class="highlight-bold">224</td></tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
+        const labelsAr = ["المعهد الوطني", "عنابة", "سطيف", "المدية", "ورقلة", "سيدي بلعباس"];
+        const techData = [50, 142, 145, 142, 78, 134];
+        const adminData = [26, 55, 108, 55, 42, 90];
+        const totalData = techData.map((v, i) => v + adminData[i]);
 
-    <div class="footer-nav">
-        <div class="nav-title"> <h3>معاهد التكوين و التعليم المهنيين</div>
-        <div class="btn-group">
-            <button class="btn-institute" onclick="openModal('modalBirKhadem')">بئر خادم</button>
-            <button class="btn-institute" onclick="openModal('modalAnnaba')">عنابة</button>
-            <button class="btn-institute" onclick="openModal('modalSetif')">سطيف</button>
-            <button class="btn-institute" onclick="openModal('modalMedea')">المدية</button>
-            <button class="btn-institute" onclick="openModal('modalOuargla')">ورقلة</button>
-            <button class="btn-institute" onclick="openModal('modalSidiBelAbbes')">سيدي بلعباس</button>
-        </div>
-    </div>
-</div>
-
-<script>
-    function openModal(id) { document.getElementById(id).style.display = 'flex'; document.body.style.overflow = 'hidden'; }
-    function closeModal(id) { document.getElementById(id).style.display = 'none'; document.body.style.overflow = 'auto'; }
-
-    const labelsAr = ["المعهد الوطني", "عنابة", "سطيف", "المدية", "ورقلة", "سيدي بلعباس"];
-    const techData = [50, 142, 145, 142, 78, 134];
-    const adminData = [26, 55, 108, 55, 42, 90];
-    const totalData = techData.map((v, i) => v + adminData[i]);
-
-    Chart.defaults.font.family = 'Segoe UI';
-    new Chart(document.getElementById('pieChart'), { type: 'pie', data: { labels: labelsAr, datasets: [{ data: totalData, backgroundColor: ['#3498db', '#1abc9c', '#e74c3c', '#f1c40f', '#9b59b6', '#e67e22'] }] } });
-    new Chart(document.getElementById('stackedBar'), { type: 'bar', data: { labels: labelsAr, datasets: [{ label: 'بيداغوجي', data: techData, backgroundColor: '#2980b9' }, { label: 'إداري', data: adminData, backgroundColor: '#bdc3c7' }] }, options: { scales: { x: { stacked: true }, y: { stacked: true } } } });
-    new Chart(document.getElementById('dayColumnChart'), { type: 'bar', data: { labels: labelsAr, datasets: [{ label: 'اليوم الأول', data: [25, 72, 74, 70, 78, 68], backgroundColor: '#1abc9c' }, { label: 'اليوم الثاني', data: [25, 70, 71, 72, 0, 66], backgroundColor: '#f1c40f' }] } });
-    new Chart(document.getElementById('committeeChart'), { type: 'line', data: { labels: labelsAr, datasets: [{ label: 'اللجنة 1', data: [25, 36, 37, 35, 39, 34], borderColor: '#8e44ad', fill: false }, { label: 'اللجنة 2', data: [0, 36, 37, 35, 39, 34], borderColor: '#d35400', borderDash: [5, 5] }] } });
-</script>
+        Chart.defaults.font.family = 'Segoe UI';
+        new Chart(document.getElementById('pieChart'), { type: 'pie', data: { labels: labelsAr, datasets: [{ data: totalData, backgroundColor: ['#3498db', '#1abc9c', '#e74c3c', '#f1c40f', '#9b59b6', '#e67e22'] }] } });
+        new Chart(document.getElementById('stackedBar'), { type: 'bar', data: { labels: labelsAr, datasets: [{ label: 'ITP + IFP', data: techData, backgroundColor: '#2980b9' }, { label: 'IAF', data: adminData, backgroundColor: '#bdc3c7' }] }, options: { scales: { x: { stacked: true }, y: { stacked: true } } } });
+        new Chart(document.getElementById('dayColumnChart'), { type: 'bar', data: { labels: labelsAr, datasets: [{ label: 'اليوم الأول', data: [25, 72, 74, 70, 78, 68], backgroundColor: '#1abc9c' }, { label: 'اليوم الثاني', data: [25, 70, 71, 72, 0, 66], backgroundColor: '#f1c40f' }] } });
+        new Chart(document.getElementById('committeeChart'), { type: 'line', data: { labels: labelsAr, datasets: [{ label: 'اللجنة 1', data: [25, 36, 37, 35, 39, 34], borderColor: '#8e44ad', fill: false }, { label: 'اللجنة 2', data: [0, 36, 37, 35, 39, 34], borderColor: '#d35400', borderDash: [5, 5] }] } });
+    </script>
 </body>
+
 </html>
