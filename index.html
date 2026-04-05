@@ -272,7 +272,7 @@
         </div>
         <div class="header-divider"></div>
         <h1>لوحة تحليل بيانات المفتشين - VTEI</h1>
-        <p>عرض تفاعلي للحصص النسبية، توزيع عبء العمل، والجداول التفصيلية المحدثة</p>
+       
     </div>
 
     <!-- ══════════════════════════════ KPI ══════════════════════════════ -->
@@ -333,7 +333,10 @@
             </div>
             <div class="chart-wrap" style="height:280px"><canvas id="dayColumnChart"></canvas></div>
         </div>
-
+<div class="chart-box" style="background: #ffffff; padding: 20px; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.08); min-height: 450px;">
+    <h3 style="text-align: right; color: #2c3e50; border-right: 4px solid #3498db; padding-right: 15px;">توزيع المفتشين حسب الجنس (ذكور / إناث) لكل معهد</h3>
+    <div class="chart-wrap" style="height:380px"><canvas id="genderBarChart"></canvas></div>
+</div>
         <div class="chart-box">
             <h3>الحصة النسبية لكل رتبة داخل المعهد (%)</h3>
             <div class="legend">
@@ -370,6 +373,7 @@
             <div class="chart-wrap" style="height:250px"><canvas id="committeeChart"></canvas></div>
         </div>
     </div>
+
 
     <!-- ══════════════════════════════ MODALS ══════════════════════════════ -->
 
@@ -650,6 +654,61 @@
 </div><!-- /container -->
 
 <script>
+
+// التأكد من استدعاء مكتبة Chart.js
+const ctxGender = document.getElementById('genderBarChart').getContext('2d');
+
+const genderBarChart = new Chart(ctxGender, {
+    type: 'bar',
+    data: {
+        labels: [
+            "المعهد الوطني - الابيار", 
+            "معهد عنابة", 
+            "معهد سطيف", 
+            "معهد المدية", 
+            "معهد ورقلة", 
+            "معهد سيدي بلعباس"
+        ],
+        datasets: [
+            {
+                label: 'إجمالي ذكور',
+                data: [45, 145, 198, 136, 103, 160], // البيانات من صورتك
+                backgroundColor: '#2980b9', // اللون الأزرق
+                borderColor: '#1f618d',
+                borderWidth: 1
+            },
+            {
+                label: 'إجمالي إناث',
+                data: [32, 52, 57, 25, 18, 64], // البيانات من صورتك
+                backgroundColor: '#f1c40f', // اللون الذهبي (ليتناسب مع شعار الوزارة)
+                borderColor: '#d4ac0d',
+                borderWidth: 1
+            }
+        ]
+    },
+    options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+            legend: {
+                position: 'top',
+                rtl: true,
+                labels: { font: { family: 'Segoe UI', size: 14 } }
+            },
+            tooltip: { rtl: true }
+        },
+        scales: {
+            y: {
+                beginAtZero: true,
+                ticks: { font: { size: 12 } }
+            },
+            x: {
+                ticks: { font: { family: 'Segoe UI', size: 12 } }
+            }
+        }
+    }
+});
+
     /* ─── MODAL HELPERS ─── */
     function openModal(id)  { document.getElementById(id).style.display = 'flex'; document.body.style.overflow = 'hidden'; }
     function closeModal(id) { document.getElementById(id).style.display = 'none'; document.body.style.overflow = 'auto';  }
