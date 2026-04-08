@@ -776,7 +776,7 @@ const genderBarChart = new Chart(ctxGender, {
         datasets: [
             {
                 label: 'إجمالي ذكور',
-                data: [45, 145, 198, 136, 103, 161], // البيانات من صورتك
+                data: [45, 145, 206, 136, 89, 167], // تم تعديل القيم المضافة والمحذوفة
                 backgroundColor: '#2980b9', // اللون الأزرق
                 borderColor: '#1f618d',
                 borderWidth: 1
@@ -819,9 +819,9 @@ const genderBarChart = new Chart(ctxGender, {
 
     /* ─── DATA ─── */
     const labs  = ["الابيار","عنابة","سطيف","المدية","ورقلة","سيدي بلعباس"];
-    const itp   = [45, 137, 140, 96,  70,  116];
-    const iaf   = [26,  55, 108, 55,  43,   91];
-    const ifp   = [ 6,   5,   7, 10,   8,   18];
+    const itp   = [45, 137, 145, 96,  60,  121];
+    const iaf   = [26,  55, 110, 55,  40,   92];
+    const ifp   = [ 6,   5,   8, 10,   7,   18];
     const total = labs.map((_,i) => itp[i]+iaf[i]+ifp[i]);
 
     const COLORS = ['#3498db','#1abc9c','#e74c3c','#f1c40f','#9b59b6','#e67e22'];
@@ -874,8 +874,8 @@ const genderBarChart = new Chart(ctxGender, {
         data: {
             labels: labs,
             datasets: [
-                { label: 'اليوم الأول', data: [52, 127, 129, 102, 62, 112], backgroundColor: '#1abc9c' },
-                { label: 'اليوم الثاني', data: [25, 105, 122, 110, 43, 112], backgroundColor: '#f1c40f' }
+                { label: 'اليوم الأول', data: [52, 127, 133, 106, 62, 112], backgroundColor: '#1abc9c' },
+                { label: 'اليوم الثاني', data: [25, 70, 130, 55, 45, 118], backgroundColor: '#f1c40f' }
             ]
         },
         options: { ...base, scales: { x: {}, y: { beginAtZero: true } } }
@@ -926,8 +926,8 @@ const genderBarChart = new Chart(ctxGender, {
         data: {
             labels: labs,
             datasets: [
-                { label: 'اللجنة 01', data: [26, 28, 29, 28, 22, 22], backgroundColor: '#8e44ad' },
-                { label: 'اللجنة 02', data: [0,  27, 29, 27,  0, 23], backgroundColor: '#d35400' }
+                { label: 'اللجنة 01', data: [26, 28, 54, 27, 40, 45], backgroundColor: '#8e44ad' },
+                { label: 'اللجنة 02', data: [0,  27, 56, 28,  0, 46], backgroundColor: '#d35400' }
             ]
         },
         options: { ...base, scales: { x: {}, y: { beginAtZero: true } } }
@@ -939,8 +939,8 @@ const genderBarChart = new Chart(ctxGender, {
         data: {
             labels: labs,
             datasets: [
-                { label: 'اللجنة 01', data: [26, 36, 38, 26, 20, 34], backgroundColor: '#8e44ad' },
-                { label: 'اللجنة 02', data: [0,  36, 37, 25, 20, 33], backgroundColor: '#d35400' }
+                { label: 'اللجنة 01', data: [51, 71, 79, 53, 34, 67], backgroundColor: '#8e44ad' },
+                { label: 'اللجنة 02', data: [0,  71, 74, 53, 33, 72], backgroundColor: '#d35400' }
             ]
         },
         options: { ...base, scales: { x: {}, y: { beginAtZero: true } } }
